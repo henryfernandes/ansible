@@ -1,6 +1,6 @@
 --- # Master playbook
 - hosts: '{{ hosts }}'
-  user: henry
+  user: '{{ users }}'
   become: yes
   connection: ssh
   gather_facts: yes
@@ -8,8 +8,8 @@
   - name: Start time
     raw: date > /home/henry/log/time.log
   roles: 
-  - { role: redhat_webservers, when: "ansible_os_family == 'RedHat'" }
-  - { role: debian_webservers, when: "ansible_os_family == 'Debian'" }
+  - { role: '{{ role }}', when: "ansible_os_family == 'RedHat'" }
+  #- { role: debian_webservers, when: "ansible_os_family == 'Debian'" }
   post_tasks:
   - name: Start time
     raw: date >> /home/henry/log/time.log
