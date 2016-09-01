@@ -16,7 +16,7 @@
   command: service httpd status
   register: result
 - name: log all the packages install on the system
-  command: yum list installed | grep (httpd|telnet|lynx)
+  command: yum list installed | grep grep 'httpd\|telnet\|lynx'
   register: install_list
 - debug: var=install_list
 - debug: var=result
