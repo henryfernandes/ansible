@@ -1,0 +1,9 @@
+[local]
+localhost
+127.0.0.1
+
+[googleweb]
+linuxnode-1
+
+[googleapp]
+ansible-node-1

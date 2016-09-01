@@ -1,0 +1,7 @@
+- name: Install APache
+  apt: pkg=apache2 state=latest
+  notify: restart apache2
+- name: Install Lynx
+  apt: pkg=lynx state=latest
+
+

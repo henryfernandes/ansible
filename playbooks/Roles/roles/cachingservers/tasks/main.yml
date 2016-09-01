@@ -1,3 +1,0 @@
-- name: Install apache install
-  apt: pkg=apache2 state=latest
-  notify: restart apache2
