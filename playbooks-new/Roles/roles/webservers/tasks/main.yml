@@ -8,6 +8,7 @@
   when: "ansible_os_family == 'RedHat'" 
   notify: Restart Httpd
   ignore_errors: yes
-- debug: Need to install telnet
+- name: Install telnet
+  debug: Need to install telnet
   when: "ansible_os_family == 'RedHat'"
   notify: InstallTelnet
