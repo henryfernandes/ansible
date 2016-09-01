@@ -5,10 +5,18 @@
   connection: ssh
   gather_facts: yes
   pre_tasks:
+  - name: Date Stamp # date/time stamp for when the playbook starts
+    command: /bin/date
+    register: timestamp_start
+  - debug: var=timestamp_start #    raw: /bin/date > /home/henry/log/playbook.log
   - name: Start time
     raw: date > /home/henry/log/time.log
   roles: 
   - { role: testroles, when: "ansible_os_family == 'RedHat'" }
   post_tasks:
+  - name: date/time stamp for when the playbook ends
+    command: /bin/date
+    register: timestamp_end
+  - debug: var=timestamp_end #   raw: /bin/date >> /home/henry/log/playbook.log  
   - name: Start time
     raw: date >> /home/henry/log/time.log
