@@ -1,0 +1,13 @@
+--- #Testing the J2 module
+- hosts: apacheweb:debian
+  user: henry
+  connection: ssh
+  become: yes
+  gather_facts: yes
+  vars:
+    userName: henry
+    passWord: henry123
+    connectionType: SFTP
+  tasks:
+    - name: Install the conf file customized for the system
+      template: src=test.conf.j2 dest=/home/henry/test-new.conf owner=henry group=henry mode=750
