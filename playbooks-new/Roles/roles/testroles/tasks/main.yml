@@ -3,7 +3,7 @@
   when: "ansible_os_family == 'RedHat'" 
   notify: Restart Httpd
 - name: Install packages
-  apt: name={{ item }} state=latest
+  yum: name={{ item }} state=latest
   with_items:
     - telnet
     - lynx
