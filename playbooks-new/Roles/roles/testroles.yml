@@ -8,7 +8,7 @@
   - name: Start time
     raw: date > /home/henry/log/time.log
   roles: 
-  - { role: testrole, when: "ansible_os_family == 'RedHat'" }
+  - { role: testroles, when: "ansible_os_family == 'RedHat'" }
   post_tasks:
   - name: Start time
     raw: date >> /home/henry/log/time.log
