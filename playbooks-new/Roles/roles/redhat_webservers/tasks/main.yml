@@ -1,12 +1,17 @@
 - name: Install apache install Centos
   yum: name={{ redhat_apache }} state=latest
   when: "ansible_os_family == 'RedHat'" 
+<<<<<<< HEAD
 - shell: service httpd status
   register: result
   until: result.stdout.find("*running") != -1
   retries: 5
   delay: 5
 - debug: var=result
+#- name: wait for the service
+#  wait_for:
+#    port: 80
+#    state: started
 #- debug: Need to install telnet
 #  when: "ansible_os_family == 'RedHat'"
 #  notify: InstallTelnet
