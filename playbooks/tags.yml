@@ -1,0 +1,19 @@
+---
+- hosts: apacheweb
+  user: henry
+  become: yes
+  connection: ssh
+  gather_facts: no
+  tasks:
+    - name: Install packages
+      apt: name={{ item }} state=latest
+      with_items:
+        - telnet
+        - lynx
+      tags:
+        - packages
+    - name: Verify that telnet was installed
+      raw: dpkg --get-selections | grep telnet > /home/henry/log/pks.log
+      tags:
+        - verify
+
