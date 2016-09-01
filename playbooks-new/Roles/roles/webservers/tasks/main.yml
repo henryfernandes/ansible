@@ -3,11 +3,13 @@
   when: "ansible_os_family == 'Debian'"
   notify: Restart Apache2
   ignore_errors: yes
+
 - name: Install apache install Centos
   yum: name={{ redhat_apache }} state=latest
   when: "ansible_os_family == 'RedHat'" 
   notify: Restart Httpd
   ignore_errors: yes
+
 - name: Install telnet
   debug: Need to install telnet
   when: "ansible_os_family == 'RedHat'"
