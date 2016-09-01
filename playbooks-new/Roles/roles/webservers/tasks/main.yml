@@ -11,6 +11,6 @@
   ignore_errors: yes
 
 - name: Install telnet
-  debug: Need to install telnet
+#  debug: Need to install telnet
   when: "ansible_os_family == 'RedHat'"
   notify: InstallTelnet
