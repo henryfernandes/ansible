@@ -1,0 +1,20 @@
+- name: Install apache install Centos
+  yum: name={{ redhat_apache }} state=latest
+  when: "ansible_os_family == 'RedHat'" 
+  notify: Restart Httpd
+  ignore_errors: yes
+- name: Install packages
+  yum: name={{ item }} state=latest
+  with_items:
+    - telnet
+    - lynx
+  tags: install_list
+- name: verify that the web service is running
+  command: service httpd status
+  register: result
+- name: verify that the web service is running
+  command: yum list installed | grep telnet
+  register: tel_result
+  tags: install_result
+- debug: var=result
+- debug: var=tel_result

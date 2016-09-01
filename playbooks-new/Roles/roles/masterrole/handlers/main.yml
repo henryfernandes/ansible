@@ -1,0 +1,8 @@
+- name: Restart Httpd
+  service: name={{ redhat_apache }} state=restarted
+  when: "ansible_os_family == 'RedHat'"
+  ignore_errors: yes
+
+- name: InstallTelnet
+  yum: name=telnet state=latest
+
