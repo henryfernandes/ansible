@@ -1,0 +1,9 @@
+--- # Local Playbook for Ansible
+- hosts: local
+  connection: local
+
+  tasks:
+    - name: Install telnet
+      apt: pkg=telnet state=latest
+
+ 

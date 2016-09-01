@@ -1,0 +1,10 @@
+---
+- hosts: appserver
+ vars_files:
+ - vars.yml		
+ tasks:
+ - name: Update apt-cache 
+ apt: update_cache=yes
+ 
+ - name: Install Vim
+ apt: name=vim state=latest

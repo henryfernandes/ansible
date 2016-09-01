@@ -1,0 +1,11 @@
+--- # Delegate to local function demo
+- hosts: apacheweb
+  become: yes
+  user: henry
+  connection: ssh
+  tasks:
+  - name: Run a remote ping on the application server
+    command: ping -c4 ansible-node-1 #>> /home/henry/log/ping.out
+    delegate_to: 127.0.0.1
+  - name: Install a package
+    apt: pkg=lynx state=latest

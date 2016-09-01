@@ -1,0 +1,5 @@
+---
+- name: Install the telnet client
+  apt: name=telnet state=latest
+- name: Install the lynx client
+  apt: name=lynx state=latest

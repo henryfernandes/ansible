@@ -1,0 +1,18 @@
+--- # Until Playbook for Ansible
+- hosts: apacheweb
+  user: henry
+  become: yes
+  connection: ssh
+  gather_facts: no
+  tasks:
+    - name: Install Apace to the Dist Type (Ubuntu)
+      apt: pkg=apache2 state=latest
+    - name: Verify Apache Installation 
+      shell: service apache2 status
+      register: result
+      until: result.stdout.find("apache2 is running") != -1
+      retries: 5
+      delay: 5
+    - debug: var=result
+
+ 

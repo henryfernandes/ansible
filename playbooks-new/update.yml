@@ -1,0 +1,16 @@
+--- # My First YAML Playbook for Ansible
+- hosts: all 
+  user: henry
+  become: yes
+  connection: ssh
+  gather_facts: no
+  vars:
+    playbook_version: 0.1b
+  tasks:
+      # Update all packages to the latest version
+    - name: Update OS 
+      apt: upgrade=dist
+
+    - name: Update cache
+      # Run the equivalent of "apt-get update" as a separate step
+      apt: update_cache=yes

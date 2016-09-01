@@ -1,0 +1,25 @@
+--- # My First YAML Playbook for Ansible
+- hosts: apacheweb
+  user: henry
+  become: yes
+  connection: ssh
+  gather_facts: no
+  vars:
+    playbook_version: 0.1b
+  vars_files:
+    - conf/copyright.yml
+    - conf/webdefaults.yml
+  vars_prompt:
+    - name: pkg_name
+      prompt: Install which Package
+  tasks:
+#    - name: Install apache 
+#      action: apt name=apache2 state=latest
+#      async: 300
+#      poll: 3
+#      notify: Restart apache
+    - name: Install {{ pkg_name }}
+      action: apt name={{ pkg_name }} state=latest
+  handlers:
+    - name: Restart apache
+      action: service name=apache2 state=restarted

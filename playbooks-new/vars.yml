@@ -1,0 +1,3 @@
+---
+control_server: ansible-node-1
+web_root: /var/html/

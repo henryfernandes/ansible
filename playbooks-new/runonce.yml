@@ -1,0 +1,21 @@
+--- # RunOne Playbook for Ansible
+- hosts: all
+  user: henry
+  become: yes
+  connection: ssh
+  gather_facts: no
+  vars:
+    playbook_version: 0.1b
+  vars_files:
+    - conf/copyright.yml
+    - conf/webdefaults.yml
+#  vars_prompt:
+#    - name: pkg_name
+#      prompt: Install which Package
+  tasks:
+#    - debug: msg="{{ lookup('env','HOME') }} is the value" 
+    - name: Check uptime
+      raw: /usr/bin/uptime >> /home/henry/uptime.log
+      run_once: yes
+
+ 

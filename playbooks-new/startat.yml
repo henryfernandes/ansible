@@ -1,0 +1,16 @@
+--- # Startat playbook
+- hosts: apacheweb
+  user: henry
+  become: yes
+  connection: ssh
+  gather_facts: no
+  tasks:
+  - name: Install telnet
+    apt: pkg=telnet state=latest
+  - name: Install lynx
+    apt: pkg=lynx state=latest
+  - name: List Home
+    command: ls -al /home/henry
+    register: result
+  - debug: var=result
+  
