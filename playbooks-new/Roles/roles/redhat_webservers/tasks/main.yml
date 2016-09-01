@@ -1,7 +1,6 @@
 - name: Install apache install Centos
   yum: name={{ redhat_apache }} state=latest
   when: "ansible_os_family == 'RedHat'" 
-<<<<<<< HEAD
 - shell: service httpd status
   register: result
   until: result.stdout.find("is running") != -1
