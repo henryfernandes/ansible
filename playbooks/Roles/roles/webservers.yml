@@ -3,13 +3,6 @@
   user: henry
   become: yes
   connection: ssh
-  gather_facts: yes
-  pre_tasks:
-  - name: Start time
-    raw: date > /home/henry/log/time.log
   roles: 
     - webservers
-  post_tasks:
-  - name: Start time
-    raw: date >> /home/henry/log/time.log
 
