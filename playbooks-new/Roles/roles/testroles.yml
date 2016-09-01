@@ -12,4 +12,3 @@
   post_tasks:
   - name: Start time
     raw: date >> /home/henry/log/time.log
-
