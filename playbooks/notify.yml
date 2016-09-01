@@ -1,0 +1,13 @@
+--- # Notify YML Playbook for Ansible
+- hosts: apacheweb
+  user: henry
+  become: yes
+  connection: ssh
+  gather_facts: no
+  tasks:
+    - name: Install apache 
+      apt: name=apache2 state=latest
+      notify: Restart apache
+  handlers:
+    - name: Restart apache
+      service: name=apache2 state=restarted

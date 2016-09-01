@@ -1,0 +1,28 @@
+--- # Outline to playbook translation
+- hosts: apacheweb # the hosts group
+  user: henry # the user which we gonna use
+  become: yes # use sudo permissions
+  gather_facts: no # stop from gathering facts
+
+  tasks:
+  - name: Create folders
+    raw: mkdir -p /home/henry/log
+  - name: Date Stamp # date/time stamp for when the playbook starts
+    raw: /bin/date > /home/henry/log/playbook.log
+  - name: install apache webserver
+    apt: pkg=apache2 state=latest
+  - name: start the web service
+    service: name=apache2 state=restarted
+  - name: verify the web service is running
+    command: service apache2 status
+    register: result
+  - debug: var=result
+  - name: install client software
+    apt: name=telnet state=installed
+  - name: install client software
+    apt: name=lynx state=installed
+  - name: log all the packages install on the system
+    raw: apt list --installed > /home/henry/log/installed.log
+  - name: date/time stamp for when the playbook ends
+    raw: /bin/date >> /home/henry/log/playbook.log
+     

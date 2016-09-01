@@ -1,0 +1,10 @@
+--- # Playbook for giving var from command line
+- hosts: '{{ hosts }}'
+  user: '{{ user }}'
+  become: yes
+  connection: ssh
+  gather_facts: no
+  tasks:
+  - name: Install some software
+    apt: pkg={{ pkg }} state=installed
+
