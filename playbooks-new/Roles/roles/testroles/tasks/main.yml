@@ -3,8 +3,8 @@
   notify: Restart Httpd
   ignore_errors: yes
 - shell: service httpd status
-  register: result
-  until: result.stdout.find("is running") != -1
+  register: ser_result
+  until: ser_result.stdout.find("is running") != -1
   retries: 5
   delay: 5
 - name: Install packages
@@ -16,7 +16,7 @@
   command: service httpd status
   register: result
 - name: log all the packages install on the system
-  command: yum list installed
+  yum: list installed | grep (httpd|telnet|lynx)
   register: install_list
 - debug: var=install_list
 - debug: var=result
