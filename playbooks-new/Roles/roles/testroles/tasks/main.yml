@@ -2,6 +2,11 @@
   yum: name={{ redhat_apache }} state=latest
   notify: Restart Httpd
   ignore_errors: yes
+- shell: service httpd status
+  register: result
+  until: result.stdout.find("is running") != -1
+  retries: 5
+  delay: 5
 - name: Install packages
   yum: name={{ item }} state=latest
   with_items:
