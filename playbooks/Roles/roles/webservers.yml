@@ -1,8 +1,0 @@
---- # Master playbook
-- hosts: apacheweb
-  user: henry
-  become: yes
-  connection: ssh
-  roles: 
-    - webservers
-
